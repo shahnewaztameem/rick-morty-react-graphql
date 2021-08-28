@@ -2,6 +2,8 @@ import React from 'react'
 import { useQuery } from '@apollo/client'
 import { gql } from 'apollo-boost'
 import { Row, Col, Container, Image, ListGroup } from 'react-bootstrap'
+import './Location.styles.css'
+import Spinner from '../Spinner/Spinner'
 
 const FETCH_LOCATION_QUERY = gql`
   query getSingleLocation($id: ID!) {
@@ -19,7 +21,7 @@ const Location = ({ match }) => {
     variables: { id: parseInt(id) },
   })
 
-  if (loading) return <div>Loading..</div>
+  if (loading) return <Spinner />
   if (error) return <div>{error}</div>
 
   const { name, type, dimension } = data.location

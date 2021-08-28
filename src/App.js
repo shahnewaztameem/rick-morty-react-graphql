@@ -1,5 +1,3 @@
-import './App.css'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import ApolloClient from 'apollo-boost'
 import { ApolloProvider } from '@apollo/react-hooks'
 import Characters from './Components/Characters/Characters'
@@ -10,6 +8,8 @@ import Locations from './Components/Locations/Locations'
 import Episodes from './Components/Episodes/Episodes'
 import Location from './Components/Location/Location'
 import Episode from './Components/Episode/Episode'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import './App.css'
 
 const client = new ApolloClient({
   uri: 'https://rickandmortyapi.com/graphql',

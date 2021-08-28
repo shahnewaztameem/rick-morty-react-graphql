@@ -1,0 +1,18 @@
+.location_info {
+  padding: 20px 15px;
+  border: 2px solid #394857;
+  border-radius: 5px;
+  background-color: #394857;
+  box-shadow: 5px 5px 13px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 5px 5px 13px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 5px 5px 13px rgba(0, 0, 0, 0.5);
+  transition: 0.3s all ease-in;
+}
+
+.location_info:hover {
+  transform: translate(0, -5px);
+}
+
+label {
+  color: #93a8bd;
+}

@@ -2,6 +2,7 @@ import React from 'react'
 import { useQuery } from '@apollo/client'
 import { gql } from 'apollo-boost'
 import { Row, Col, Container, Image, ListGroup } from 'react-bootstrap'
+import Spinner from '../Spinner/Spinner'
 
 const FETCH_CHARACTER_QUERY = gql`
   query getSingleCharacter($id: ID!) {
@@ -34,7 +35,7 @@ const Character = ({ match }) => {
     variables: { id: parseInt(id) },
   })
 
-  if (loading) return <div>Loading..</div>
+  if (loading) return <Spinner />
   if (error) return <div>{error}</div>
 
   const { name, status, species, gender, origin, location, image, episode } =
@@ -42,9 +43,9 @@ const Character = ({ match }) => {
 
   return (
     <Container>
-      <Row>
+      <Row className='mt-5 mb-5'>
         <Col md={4}>
-          <Image src={image} />
+          <Image src={image} roundedCircle />
         </Col>
         <Col md={8}>
           <ListGroup>
@@ -90,7 +91,7 @@ const Character = ({ match }) => {
           </ListGroup>
         </Col>
       </Row>
-      <Row>
+      <Row className='mb-5'>
         <Col md={12} className='text-center'>
           <h1>Episodes</h1>
           {episode.map((ep) => (

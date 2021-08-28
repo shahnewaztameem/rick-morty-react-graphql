@@ -3,6 +3,8 @@ import { useQuery } from '@apollo/client'
 import { gql } from 'apollo-boost'
 import { Row, Col, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import CharacterCard from '../CharacterCard/CharacterCard'
+import Spinner from '../Spinner/Spinner'
 
 const FETCH_CHARACTERS_QUERY = gql`
   query getAllCharacters {
@@ -10,21 +12,23 @@ const FETCH_CHARACTERS_QUERY = gql`
       results {
         id
         name
+        image
       }
     }
   }
 `
 const Characters = () => {
   const { loading, error, data } = useQuery(FETCH_CHARACTERS_QUERY)
-  if (loading) return <div>Loading..</div>
+  if (loading) return <Spinner />
   if (error) return <div>{error}</div>
   return (
     <Container>
-      <Row>
+      <Row className='mt-5'>
+        <h1>Characters</h1>
         {data.characters.results.map((character) => (
-          <Col md={4} key={character.id}>
+          <Col md={3} key={character.id}>
             <Link to={`/character/${character.id}`}>
-              <p>{character.name}</p>
+              <CharacterCard character={character} />
             </Link>
           </Col>
         ))}

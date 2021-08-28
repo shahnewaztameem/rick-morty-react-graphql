@@ -1,0 +1,6 @@
+.character_card {
+  transition: 0.3s all ease-in;
+}
+.character_card:hover {
+  transform: translate(0, -5px);
+}

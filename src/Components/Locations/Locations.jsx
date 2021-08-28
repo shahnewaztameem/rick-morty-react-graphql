@@ -3,6 +3,8 @@ import { useQuery } from '@apollo/client'
 import { gql } from 'apollo-boost'
 import { Row, Col, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import './Locations.styles.css'
+import Spinner from '../Spinner/Spinner'
 
 const FETCH_LOCATIONS_QUERY = gql`
   query getAllLocations {
@@ -18,15 +20,22 @@ const FETCH_LOCATIONS_QUERY = gql`
 `
 const Locations = () => {
   const { loading, error, data } = useQuery(FETCH_LOCATIONS_QUERY)
-  if (loading) return <div>Loading..</div>
+  if (loading) return <Spinner />
   if (error) return <div>{error}</div>
   return (
     <Container>
-      <Row>
+      <Row className='mt-5'>
+        <h1>Locations</h1>
         {data.locations.results.map((location) => (
-          <Col md={4} key={location.id}>
+          <Col md={12} key={location.id}>
             <Link to={`/location/${location.id}`}>
-              <p>{location.name}</p>
+              <Row className='d-flex'>
+                <div className='location_info d-flex mb-4'>
+                  <Col>{location.name}</Col>
+                  <Col>{location.type}</Col>
+                  <Col>{location.dimension}</Col>
+                </div>
+              </Row>
             </Link>
           </Col>
         ))}
