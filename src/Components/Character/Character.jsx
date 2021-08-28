@@ -1,33 +1,8 @@
 import React from 'react'
 import { useQuery } from '@apollo/client'
-import { gql } from 'apollo-boost'
 import { Row, Col, Container, Image, ListGroup } from 'react-bootstrap'
 import Spinner from '../Spinner/Spinner'
-
-const FETCH_CHARACTER_QUERY = gql`
-  query getSingleCharacter($id: ID!) {
-    character(id: $id) {
-      id
-      name
-      status
-      species
-      type
-      gender
-      origin {
-        name
-      }
-      location {
-        name
-      }
-
-      image
-      episode {
-        name
-        episode
-      }
-    }
-  }
-`
+import { FETCH_CHARACTER_QUERY } from '../../queries'
 
 const Character = ({ match }) => {
   const id = match.params.id

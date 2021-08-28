@@ -1,26 +1,9 @@
 import React from 'react'
 import { useQuery } from '@apollo/client'
-import { gql } from 'apollo-boost'
 import { Row, Col, Container, Image, ListGroup } from 'react-bootstrap'
 import './Episode.styles.css'
 import Spinner from '../Spinner/Spinner'
-
-const FETCH_EPISODE_QUERY = gql`
-  query fetchEpisode($id: ID!) {
-    episode(id: $id) {
-      id
-      name
-      air_date
-      episode
-      characters {
-        id
-        name
-        image
-      }
-      created
-    }
-  }
-`
+import { FETCH_EPISODE_QUERY } from '../../queries'
 
 const Episode = ({ match }) => {
   const id = match.params.id

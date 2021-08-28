@@ -1,22 +1,11 @@
 import React from 'react'
 import { useQuery } from '@apollo/client'
-import { gql } from 'apollo-boost'
+import { FETCH_CHARACTERS_QUERY } from '../../queries'
 import { Row, Col, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import CharacterCard from '../CharacterCard/CharacterCard'
 import Spinner from '../Spinner/Spinner'
 
-const FETCH_CHARACTERS_QUERY = gql`
-  query getAllCharacters {
-    characters {
-      results {
-        id
-        name
-        image
-      }
-    }
-  }
-`
 const Characters = () => {
   const { loading, error, data } = useQuery(FETCH_CHARACTERS_QUERY)
   if (loading) return <Spinner />

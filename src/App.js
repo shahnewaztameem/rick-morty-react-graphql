@@ -1,4 +1,4 @@
-import ApolloClient from 'apollo-boost'
+import { client } from './api'
 import { ApolloProvider } from '@apollo/react-hooks'
 import Characters from './Components/Characters/Characters'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
@@ -10,10 +10,6 @@ import Location from './Components/Location/Location'
 import Episode from './Components/Episode/Episode'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
-
-const client = new ApolloClient({
-  uri: 'https://rickandmortyapi.com/graphql',
-})
 
 function App() {
   return (

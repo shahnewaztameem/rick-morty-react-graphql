@@ -1,19 +1,9 @@
 import React from 'react'
 import { useQuery } from '@apollo/client'
-import { gql } from 'apollo-boost'
-import { Row, Col, Container, Image, ListGroup } from 'react-bootstrap'
+import { Row, Col, Container, ListGroup } from 'react-bootstrap'
 import './Location.styles.css'
 import Spinner from '../Spinner/Spinner'
-
-const FETCH_LOCATION_QUERY = gql`
-  query getSingleLocation($id: ID!) {
-    location(id: $id) {
-      name
-      type
-      dimension
-    }
-  }
-`
+import { FETCH_LOCATION_QUERY } from '../../queries'
 
 const Location = ({ match }) => {
   const id = match.params.id

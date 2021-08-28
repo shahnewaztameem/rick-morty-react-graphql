@@ -1,23 +1,11 @@
 import React from 'react'
 import { useQuery } from '@apollo/client'
-import { gql } from 'apollo-boost'
 import { Row, Col, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './Locations.styles.css'
 import Spinner from '../Spinner/Spinner'
+import { FETCH_LOCATIONS_QUERY } from '../../queries'
 
-const FETCH_LOCATIONS_QUERY = gql`
-  query getAllLocations {
-    locations {
-      results {
-        id
-        name
-        type
-        dimension
-      }
-    }
-  }
-`
 const Locations = () => {
   const { loading, error, data } = useQuery(FETCH_LOCATIONS_QUERY)
   if (loading) return <Spinner />

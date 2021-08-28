@@ -1,26 +1,11 @@
 import React from 'react'
 import { useQuery } from '@apollo/client'
-import { gql } from 'apollo-boost'
 import { Row, Col, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import EpisodesCard from '../EpisodesCard/EpisodesCard'
 import Spinner from '../Spinner/Spinner'
+import { FETCH_EPISODES_QUERY } from '../../queries'
 
-const FETCH_EPISODES_QUERY = gql`
-  query fetchEpisodes {
-    episodes {
-      results {
-        id
-        name
-        air_date
-        episode
-        characters {
-          name
-        }
-      }
-    }
-  }
-`
 const Episodes = () => {
   const { loading, error, data } = useQuery(FETCH_EPISODES_QUERY)
   if (loading) return <Spinner />
