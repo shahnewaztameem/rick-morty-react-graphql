@@ -19,7 +19,7 @@ const Character = ({ match }) => {
   return (
     <Container>
       <Row className='mt-5 mb-5'>
-        <Col md={4}>
+        <Col md={4} className='d-flex justify-content-center mb-4'>
           <Image src={image} roundedCircle />
         </Col>
         <Col md={8}>
